@@ -27,12 +27,12 @@ Windows 10 Pro の場合は Windows に直接 docker をインストールしま
  - Windows 10 Pro : windows → コマンドプロンプト → docker コマンド
  - Windows 10 Home : windows → docekr terminal ( VirtualBox ) → docker コマンド
 
-![WindowsでのDocker構成の違い](./doc_img/WindowsでのDocker構成の違い.png "WindowsでのDocker構成の違い")
+![WindowsでのDocker構成の違い](../doc_img/WindowsでのDocker構成の違い.png "WindowsでのDocker構成の違い")
 
 #### Tips : Docker CE で Linux container を利用する場合
 タスクトレイの docker アイコンを右クリックし「Switch to Linux containers」をクリックする必要があります。
 
-![Switch to Linux containers](./doc_img/SwitchToLinuxContainers.png "Switch to Linux containers")
+![Switch to Linux containers](../doc_img/SwitchToLinuxContainers.png "Switch to Linux containers")
 
 #### Tips : VirtualBox のポートフォワードを設定する
 docker Toolbox は内部で VirtualBox 上のゲスト OS ( イメージ名 : default ) が動作しているので、これと通信できるよう[VirtualBox上のゲストOSにホストOSからNATでアクセスする]( https://www.karakaram.com/virtualbox-port-fowarding)を参考に設定を変更する必要があります。
@@ -51,13 +51,12 @@ Jupyter 公式が配布している[Dockerで基本的なData Science環境(Jupy
 ### ファイル共有用のディレクトリを作成
 任意の場所にディレクトリを作成する
 
-1. Windows 10 Pro の場合
-コマンドプロンプトで実行
+- Windows 10 Pro の場合コマンドプロンプトで実行
 ```
 mkdir %USERPROFILE%\Documents\docker\datascience
 ```
-2. Windows 10 Home ( docker Toolbox ) の場合
-docer terminal 上で下記を実行
+
+- Windows 10 Home ( docker Toolbox ) の場合 docer terminal 上で下記を実行
 ```
 mkdir -p ~/Documents/docker/datascience
 ```
@@ -91,8 +90,18 @@ ENV SHELL=/bin/bash \
     LANGUAGE=ja_JP.UTF-8 \
     TZ=Asia/Tokyo
 
-RUN apt-get install -yq python3-pip python3-dev \
- && pip3 install jupyter
+RUN apt-get install -yq  python3-pip python3-dev \
+ && pip3 install jupyter \
+ && jupyter notebook --generate-config
+
+RUN sed -i \
+    -e "s/^#c.NotebookApp.token = .*/c.NotebookApp.token = ''/" \
+    -e "s/^#c.NotebookApp.password = .*/c.NotebookApp.password = ''/" \
+    -e "s/^#c.NotebookApp.ip = .*/c.NotebookApp.ip = '0.0.0.0'/" \
+    -e "s/^#c.NotebookApp.allow_root = False/c.NotebookApp.allow_root = True/" \
+    -e "s/^#c.NotebookApp.open_browser = True/c.NotebookApp.open_browser = False/" \
+    -e "s/^#c.NotebookApp.notebook_dir = .*/c.NotebookApp.notebook_dir = '\/root\/work'/" \
+    /root/.jupyter/jupyter_notebook_config.py
 
 RUN echo "#!/bin/bash" > /usr/local/bin/start_jupyter.sh
 RUN echo "jupyter notebook --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.notebook_dir='/root/work' --ip=0.0.0.0 --allow-root --no-browser" >> /usr/local/bin/start_jupyter.sh
@@ -118,6 +127,7 @@ docker build -t datascience .
 
 ## docker container の起動と停止
 ### 起動
+Windows 10 Pro の場合は次のコマンドで実行できます ( Windows 10 Home の場合は -v の引数を ~/Documents/docker/datascience:/root/work に置き換えてください )。
 上記で作成したディレクトリ %USERPROFILE%\Documents\docker\datascience を docker イメージの /root/work にマウント
 ```
 docker run -itd -p 8888:8888 -v %USERPROFILE%\Documents\docker\datascience:/root/work --user root datascience
@@ -127,7 +137,7 @@ docker run -itd -p 8888:8888 -v %USERPROFILE%\Documents\docker\datascience:/root
 ブラウザを起動し、http://localhost:8888 にアクセスします。次のとおり、はじめは先ほど作成した Dockerfile のみ見えている状態になります。
 ここで画面右上の「New」ボタンを押すと Python3 や terminal ( Bash ) を書くことができます。
 
-![初めての画面](./doc_img/Jupyter_FirstRun.PNG "初めての画面")
+![初めての画面](../doc_img/Jupyter_FirstRun.PNG "初めての画面")
 
 ### 停止
 1. 起動しているコンテナの ID を取得

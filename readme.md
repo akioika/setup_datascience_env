@@ -1,7 +1,16 @@
 # はじめの一歩
 
 ## もくじ
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
+- [はじめの一歩](#一歩)
+	- [もくじ](#)
+	- [ドキュメントの目的](#目的)
+	- [対象者](#対象者)
+	- [注意](#注意)
+	- [読む順番](#読順番)
+
+<!-- /TOC -->
 
 ## ドキュメントの目的
 ローカルの Windows PC に仮想化技術の一つである Docker を利用して Ubuntu 18.04 環境を構築し
@@ -26,5 +35,5 @@
 また、読み進めれば同じ環境を構築できることを目指しますが「コマンドプロンプトとは」「dockerとは」については記述しません。
 
 ## 読む順番
-1. [Jupyter を構築する](./make_jupyter_env.md)
-2. [データサイエンスに利用するライブラリをインストールする](./install_detascience_libs.md)
+1. [Jupyter を構築する](./setup_jupyter_env/readme.md)
+2. [データサイエンスに利用するライブラリをインストールする](./install_datascience_libs/readme.md)
