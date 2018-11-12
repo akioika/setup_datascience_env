@@ -25,7 +25,7 @@ Windows 10 Pro の場合は Windows に直接 docker をインストールしま
  - Windows 10 Pro : windows → コマンドプロンプト → docker コマンド
  - Windows 10 Home : windows → docekr terminal ( VirtualBox ) → docker コマンド
 
-![WindowsでのDocker構成の違い]( ./doc_imag/WindowsでのDocker構成の違い.png "WindowsでのDocker構成の違い")
+![WindowsでのDocker構成の違い]( ./doc_img/WindowsでのDocker構成の違い.png "WindowsでのDocker構成の違い")
 
 #### VirtualBox のポートフォワードを設定する ( Windows 10 Home のみ )
 docker Toolbox は内部で VirtualBox 上のゲスト OS ( イメージ名 : default ) が動作しているので、これと通信できるよう[VirtualBox上のゲストOSにホストOSからNATでアクセスする]( https://www.karakaram.com/virtualbox-port-fowarding)を参考に設定を変更する必要がある。
