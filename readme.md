@@ -26,4 +26,5 @@
 また、読み進めれば同じ環境を構築できることを目指しますが「コマンドプロンプトとは」「dockerとは」については記述しません。
 
 ## 読む順番
-1．[Jupyter を構築する](./make_jupyter_env.md)
+1. [Jupyter を構築する](./make_jupyter_env.md)
+2. [データサイエンスに利用するライブラリをインストールする](./install_detascience_libs.md)
