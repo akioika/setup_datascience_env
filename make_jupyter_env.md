@@ -1,4 +1,4 @@
-# Jupyter 構築する
+# Jupyter を構築する
 
 ## はじめに
 ここでは Windows 環境に docker をインストールし、ubuntu イメージに Python3 の Jupyter notebook 上から Bash を実行できるようにすることを目的とします。
@@ -25,6 +25,8 @@ Windows 10 Pro の場合は Windows に直接 docker をインストールしま
  - Windows 10 Pro : windows → コマンドプロンプト → docker コマンド
  - Windows 10 Home : windows → docekr terminal ( VirtualBox ) → docker コマンド
 
+![WindowsでのDocker構成の違い]( ./doc_image/WindowsでのDocker構成の違い.png "WindowsでのDocker構成の違い")
+
 #### VirtualBox のポートフォワードを設定する ( Windows 10 Home のみ )
 docker Toolbox は内部で VirtualBox 上のゲスト OS ( イメージ名 : default ) が動作しているので、これと通信できるよう[VirtualBox上のゲストOSにホストOSからNATでアクセスする]( https://www.karakaram.com/virtualbox-port-fowarding)を参考に設定を変更する必要がある。
 
@@ -32,7 +34,7 @@ docker Toolbox は内部で VirtualBox 上のゲスト OS ( イメージ名 : de
 2018/11/11 現在、docker toolbox をインストールすると VirtualBox v5.2.8 がバンドルされますが、最新 Windows ではネットワークアダプタを作成することができず、起動できません。その場合、最新の VirtualBox v5.2.22 をダウンロードし、上書きでインストールしてください。
 
 ## docker イメージの作成
-Jupyter 公式が配布している [Dockerで基本的なData Science環境(Jupyter, Python, R, Julia, 定番ライブラリ)を構築する。](https://qiita.com/y4m3/items/c2703d4e131e05084b7b) を利用してもよいのだが、次の不都合があるので自作する。
+Jupyter 公式が配布している [Dockerで基本的なData Science環境(Jupyter, Python, R, Julia, 定番ライブラリ)を構築する。](https://qiita.com/y4m3/items/c2703d4e131e05084b7b) を利用してもよいのですが、次の不都合があるので自作します。
 
 1. 言語環境が en_US.UTF8 → ja_JP.UTF8 にしたい
 2. python のパッケージマネージャが Anaconda → pip にしたい
