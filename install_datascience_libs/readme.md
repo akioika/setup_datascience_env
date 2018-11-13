@@ -1,7 +1,16 @@
 # データサイエンスに利用するライブラリをインストールする
 
-## まだ書き途中
-これは一応動きますが、まだ Juman++ について書けていません。
+## もくじ
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 orderedList:0 -->
+
+- [データサイエンスに利用するライブラリをインストールする](#データサイエンスに利用するライブラリをインストールする)
+	- [もくじ](#もくじ)
+	- [はじめに](#はじめに)
+	- [注意](#注意)
+	- [Dockerfile の改変](#dockerfile-改変)
+	- [起動と停止](#起動停止)
+
+<!-- /TOC -->
 
 ## はじめに
 ここでは[Jupyter を構築する](../setup_jupyter_env/readme.md)で作成した Dockerfile を改変して
@@ -68,5 +77,7 @@ RUN echo "c.IPKernelApp.matplotlib = 'inline'" >> /root/.jupyter/jupyter_noteboo
 ## 起動と停止
 前回同様、楽しんでください。
 
+- Mecab の動作確認
 ![Mecab の動作確認](../doc_img/MeCab_Test.PNG "Mecab の動作確認")
+- Matplotlib で日本語の確認
 ![Matplotlib で日本語の確認](../doc_img/Matplotlib_Test.PNG "Matplotlib で日本語の確認")
