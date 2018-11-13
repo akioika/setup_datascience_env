@@ -36,12 +36,14 @@ Windows 10 Pro の場合は Windows に直接 docker をインストールしま
 
 #### Tips : VirtualBox のポートフォワードを設定する
 docker Toolbox は内部で VirtualBox 上のゲスト OS ( イメージ名 : default ) が動作しているので、これと通信できるよう[VirtualBox上のゲストOSにホストOSからNATでアクセスする]( https://www.karakaram.com/virtualbox-port-fowarding)を参考に設定を変更する必要があります。
+ここでは、Jupyter notebook をインターフェイスとするため、ホスト OS 127.0.0.0:8888 からゲスト OS :8888 にアクセスできるようにしてください。
 
 #### Tips : VirtualBox が Windows Update 後に起動できなくなった場合
 2018/11/11 現在、最新の docker toolbox をインストールすると VirtualBox v5.2.8 がバンドルされていますが、ネットワークアダプタを作成することができず起動できません。その場合、最新の VirtualBox v5.2.22 をダウンロードし、上書きでインストールしてください。
 
 ## docker イメージの作成
-Jupyter 公式が配布している[Dockerで基本的なData Science環境(Jupyter, Python, R, Julia, 定番ライブラリ)を構築する。](https://qiita.com/y4m3/items/c2703d4e131e05084b7b) を利用してもよいのですが、次の不都合があるので自作します。
+[Dockerで基本的なData Science環境(Jupyter, Python, R, Julia, 定番ライブラリ)を構築する。](https://qiita.com/y4m3/items/c2703d4e131e05084b7b) を参考に Jupyter 公式が配布している
+Dockerfile 利用してもよいのですが、次の不都合があるので自作します。
 
 1. 言語環境が en_US.UTF8 → ja_JP.UTF8 にしたい
 2. python のパッケージマネージャが Anaconda → pip にしたい

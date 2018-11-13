@@ -25,7 +25,7 @@ ENV SHELL=/bin/bash \
 
 WORKDIR /tmp
 
-RUN apt-get install -yq python3-pip python3-dev \
+RUN apt-get install -yq python3-pip python3-dev fonts-ipaexfont \
     mecab libmecab-dev mecab-ipadic mecab-ipadic-utf8 \
     git curl sudo \
  && pip3 install jupyter \
@@ -37,6 +37,8 @@ RUN apt-get install -yq python3-pip python3-dev \
 RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git \
  && yes yes | /tmp/mecab-ipadic-neologd/bin/install-mecab-ipadic-neologd -n -a \
  && mecab -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/
+
+RUN sed -i -e 's/^#font.family.*/&\nfont.family : IPAexGothic/' /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/matplotlibrc
 
 RUN echo "c.IPKernelApp.matplotlib = 'inline'" >> /root/.jupyter/jupyter_notebook_config.py
 
