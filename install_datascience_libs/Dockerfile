@@ -30,7 +30,7 @@ RUN apt-get install -yq python3-pip python3-dev fonts-ipaexfont \
     git curl sudo \
  && pip3 install jupyter \
  && pip3 install cython pandas scipy matplotlib scikit-learn tensorflow gensim \
- && pip3 install requests aiohttp scrapelib lxml beautifulsoup4 feedparser \
+ && pip3 install requests requests-html aiohttp scrapelib lxml beautifulsoup4 feedparser \
  && pip3 install mecab-python3 \
  && jupyter notebook --generate-config
 

@@ -78,6 +78,9 @@ RUN echo "c.IPKernelApp.matplotlib = 'inline'" >> /root/.jupyter/jupyter_noteboo
 前回同様、楽しんでください。
 
 - Mecab の動作確認
+
 ![Mecab の動作確認](../doc_img/MeCab_Test.PNG "Mecab の動作確認")
+
 - Matplotlib で日本語の確認
+
 ![Matplotlib で日本語の確認](../doc_img/Matplotlib_Test.PNG "Matplotlib で日本語の確認")
