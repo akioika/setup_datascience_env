@@ -151,6 +151,25 @@ cd ~/Documents/docker/datascience
 docker build -t datascience .
 ```
 
+### Could not resolve 'security.ubuntu.com'
+docker はホスト OS の DNS 設定を基にしてイメージの DNS を設定します。ところが、この方法ではうまく ubuntu のリポジトリサーバを探すことができずに次の様に失敗してしまうことがあります。
+
+```
+Err:1 http://security.ubuntu.com/ubuntu artful-security InRelease
+  Could not resolve 'security.ubuntu.com'
+Err:2 http://us.archive.ubuntu.com/ubuntu artful InRelease
+  Could not resolve 'us.archive.ubuntu.com'
+Err:3 http://us.archive.ubuntu.com/ubuntu artful-updates InRelease
+  Could not resolve 'us.archive.ubuntu.com'
+Err:4 http://us.archive.ubuntu.com/ubuntu artful-backports InRelease
+  Could not resolve 'us.archive.ubuntu.com'
+```
+
+その場合、次の様に DNS を設定してください ( 8.8.8.8, 8.8.4.4 は Google が提供する DNS サーバです ) 。
+
+![DNS設定](../doc_img/dns_setting.PNG "DNS設定")
+
+
 ## docker container の起動と停止
 ### 起動
 Windows 10 Pro の場合は次のコマンドで実行できます ( Windows 10 Home の場合は -v の引数を ~/Documents/docker/datascience:/root/work に置き換えてください )。
