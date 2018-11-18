@@ -26,17 +26,17 @@ ENV SHELL=/bin/bash \
 WORKDIR /tmp
 
 RUN apt-get install -yq python3-pip python3-dev fonts-ipaexfont \
-    mecab libmecab-dev mecab-ipadic mecab-ipadic-utf8 \
+    swig mecab libmecab-dev mecab-ipadic mecab-ipadic-utf8 \
     git curl sudo \
  && pip3 install jupyter \
- && pip3 install cython pandas xlrd scipy matplotlib scikit-learn tensorflow gensim \
- && pip3 install requests requests-html　aiohttp scrapelib lxml beautifulsoup4 feedparser \
+ && pip3 install cython pandas xlrd scipy matplotlib wordcloud scikit-learn tensorflow gensim \
+ && pip3 install requests requests-html aiohttp scrapelib lxml beautifulsoup4 feedparser \
  && pip3 install mecab-python3 \
  && jupyter notebook --generate-config
 
 RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git \
  && yes yes | /tmp/mecab-ipadic-neologd/bin/install-mecab-ipadic-neologd -n -a \
- && mecab -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/
+ && echo "テストだよ" | mecab -d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd/
 
 RUN sed -i -e 's/^#font.family.*/&\nfont.family : IPAexGothic/' /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/matplotlibrc
 
