@@ -37,3 +37,4 @@
 ## 読む順番
 1. [Jupyter を構築する](./setup_jupyter_env/readme.md)
 2. [データサイエンスに利用するライブラリをインストールする](./install_datascience_libs/readme.md)
+3. [Spark をインストールして jupyter から触る](./install_apache_spark)
